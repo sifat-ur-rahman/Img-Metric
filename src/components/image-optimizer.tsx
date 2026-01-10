@@ -18,7 +18,7 @@ export default function ImageOptimizer() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 transition-colors">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 font-roboto via-blue-50 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 transition-colors">
       <div className="max-w-7xl mx-auto px-4 py-12">
         {/* Header with Theme Toggle */}
         <Header isDark={isDark} setIsDark={setIsDark} />

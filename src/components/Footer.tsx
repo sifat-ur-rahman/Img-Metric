@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 function Footer() {
@@ -16,12 +17,16 @@ function Footer() {
           <div className="text-center md:text-right">
             <p className="text-sm text-slate-600 dark:text-slate-400">
               Developed with care by{" "}
-              <span className="font-semibold text-slate-900 dark:text-slate-100">
+              <Link
+                target="_blank"
+                href="https://sifat-ur-rahman.vercel.app/"
+                className="font-semibold text-slate-900 dark:text-slate-100"
+              >
                 Sifat
-              </span>
+              </Link>
             </p>
             <p className="text-xs text-slate-500 dark:text-slate-500 mt-1">
-              © 2026 ImgMetric. All rights reserved.
+              © {new Date().getFullYear()} ImgMetric. All rights reserved.
             </p>
           </div>
         </div>

@@ -2,6 +2,7 @@ import type React from "react";
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "../components/theme-provider";
+import { Roboto } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "ImgMetric - Image Optimizer",
@@ -25,7 +26,11 @@ export const metadata: Metadata = {
     apple: "/Img-Metric-logo.png",
   },
 };
-
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-roboto",
+});
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -33,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`font-sans antialiased `}>
+      <body className={`font-sans antialiased  ${roboto.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>
