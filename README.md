@@ -1,7 +1,5 @@
 # ImgMetric - Image Optimizer Tool
 
-![ImgMetric Logo](/public/logo.png)
-
 A modern, user-friendly web application for analyzing, compressing, and optimizing images for web performance. Built with Next.js, React, and Tailwind CSS.
 
 ## Features
