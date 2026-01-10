@@ -153,21 +153,6 @@ The application uses HTML5 Canvas API for image compression:
 - **Lazy Loading**: Images load on demand
 - **Optimized Bundles**: Modern JavaScript with tree-shaking
 
-## Accessibility
-
-- ARIA labels for all interactive elements
-- Keyboard navigation support
-- High contrast mode compatible
-- Screen reader friendly
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit pull requests or open issues for bugs and feature requests.
-
-## License
-
-This project is open source and available under the MIT License.
-
 ## Credits
 
 **Developed with care by Sifat**
