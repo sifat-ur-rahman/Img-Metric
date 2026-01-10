@@ -6,8 +6,7 @@ import {
   Trash2,
   Zap,
 } from "lucide-react";
-import React from "react";
-import { ImageData } from "./image-optimizer";
+import { ImageData } from "../lib/tpye";
 
 function ImagesGrid({ images, setImages }: any) {
   const getScoreLabel = (score: number) => {
