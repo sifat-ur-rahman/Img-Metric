@@ -40,8 +40,8 @@ A modern, user-friendly web application for analyzing, compressing, and optimizi
 1. Clone the repository:
 
 ```bash
-git clone <repository-url>
-cd image-optimizer
+git clone https://github.com/sifat-ur-rahman/Img-Metric.git
+cd Img-Metric
 ```
 
 2. Install dependencies:

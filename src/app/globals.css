@@ -72,6 +72,7 @@
   --sidebar-accent-foreground: oklch(0.75 0.24 25);
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.65 0.22 179);
+  --animation: alternate;
 }
 
 @theme inline {
