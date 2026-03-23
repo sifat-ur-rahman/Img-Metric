@@ -68,19 +68,16 @@ npm start
 ## Usage
 
 1. **Upload Images**:
-
    - Click the upload area or drag and drop images
    - Supports JPG, PNG, WebP, and other image formats
    - Upload multiple images at once
 
 2. **View Analysis**:
-
    - See detailed metrics for each image
    - Check quality scores and device compatibility
    - Get compression recommendations
 
 3. **Compress Images**:
-
    - Click the download button on any image card
    - Images are optimized and compressed automatically
    - Maintains visual quality while reducing file size
@@ -97,7 +94,6 @@ The application uses a comprehensive algorithm to calculate optimization scores:
 ### Scoring Factors
 
 - **File Size**: Penalizes images larger than recommended thresholds
-
   - \> 500 KB: -40 points
   - \> 300 KB: -25 points
   - \> 200 KB: -10 points

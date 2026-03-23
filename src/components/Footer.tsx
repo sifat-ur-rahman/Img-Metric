@@ -3,11 +3,11 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="mt-16 border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+    <footer className="mt-16 border-t border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-800/50">
+      <div className="mx-auto max-w-7xl px-4 py-8">
+        <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <div>
-            <p className="text-slate-700 dark:text-slate-300 font-semibold mb-1">
+            <p className="mb-1 font-semibold text-slate-700 dark:text-slate-300">
               ImgMetric
             </p>
             <p className="text-sm text-slate-600 dark:text-slate-400">
@@ -25,7 +25,7 @@ function Footer() {
                 Sifat
               </Link>
             </p>
-            <p className="text-xs text-slate-500 dark:text-slate-500 mt-1">
+            <p className="mt-1 text-xs text-slate-500 dark:text-slate-500">
               © {new Date().getFullYear()} ImgMetric. All rights reserved.
             </p>
           </div>

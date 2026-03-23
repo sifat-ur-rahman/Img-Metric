@@ -67,10 +67,10 @@ function UploadArea({
         setIsDragging(false);
         handleImages(e.dataTransfer?.files ?? null);
       }}
-      className={`mb-12 relative rounded-2xl border-2 border-dashed p-8 transition-all ${
+      className={`relative mb-12 rounded-2xl border-2 border-dashed p-8 transition-all ${
         isDragging
           ? "border-teal-500 bg-teal-50 dark:bg-teal-950/30"
-          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-teal-400 dark:hover:border-teal-500"
+          : "border-slate-300 bg-white hover:border-teal-400 dark:border-slate-700 dark:bg-slate-800 dark:hover:border-teal-500"
       }`}
     >
       <input
@@ -78,19 +78,19 @@ function UploadArea({
         accept="image/*"
         multiple
         onChange={(e) => handleImages(e.target.files)}
-        className="absolute inset-0 opacity-0 cursor-pointer"
+        className="absolute inset-0 cursor-pointer opacity-0"
       />
       <div className="text-center">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-teal-100 to-cyan-100 dark:from-teal-950 dark:to-cyan-950 mb-4">
-          <Upload className="w-8 h-8 text-teal-600 dark:text-teal-400" />
+        <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-teal-100 to-cyan-100 dark:from-teal-950 dark:to-cyan-950">
+          <Upload className="h-8 w-8 text-teal-600 dark:text-teal-400" />
         </div>
-        <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-2">
+        <h2 className="mb-2 text-xl font-semibold text-slate-900 dark:text-slate-100">
           Drop your images here
         </h2>
         <p className="text-slate-600 dark:text-slate-400">
           or click to select files
         </p>
-        <p className="text-sm text-slate-500 dark:text-slate-500 mt-2">
+        <p className="mt-2 text-sm text-slate-500 dark:text-slate-500">
           Support for JPG, PNG, WebP, and other image formats
         </p>
       </div>

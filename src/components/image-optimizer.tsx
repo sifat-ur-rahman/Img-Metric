@@ -18,14 +18,14 @@ export default function ImageOptimizer() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 font-roboto via-blue-50 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 transition-colors">
-      <div className="max-w-7xl mx-auto px-4 py-12">
+    <div className="font-roboto min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 transition-colors dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+      <div className="mx-auto max-w-7xl px-4 py-12">
         {/* Header with Theme Toggle */}
         <Header isDark={isDark} setIsDark={setIsDark} />
 
         {/* Subtitle */}
         <div className="mb-10">
-          <p className="text-slate-600 dark:text-slate-400 text-lg">
+          <p className="text-lg text-slate-600 dark:text-slate-400">
             Analyze, compress, and optimize your images for web performance
           </p>
         </div>

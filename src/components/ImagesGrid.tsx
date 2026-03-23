@@ -63,7 +63,7 @@ function ImagesGrid({ images, setImages }: any) {
   const compressImage = (
     file: File,
     quality = 0.7,
-    maxWidth = 1200
+    maxWidth = 1200,
   ): Promise<Blob> => {
     const img = document.createElement("img") as HTMLImageElement;
     img.crossOrigin = "anonymous";
@@ -107,7 +107,7 @@ function ImagesGrid({ images, setImages }: any) {
         Analyzed Images ({images.length})
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {images.map((img: any) => {
           const warn = deviceWarning(img);
           const scoreInfo = getScoreLabel(img.score);
@@ -116,27 +116,27 @@ function ImagesGrid({ images, setImages }: any) {
           return (
             <div
               key={img.id}
-              className="group rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-hidden hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+              className="group transform overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800 dark:hover:shadow-2xl"
             >
               {/* Image Preview with Overlay */}
-              <div className="relative h-56 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center overflow-hidden">
+              <div className="relative flex h-56 items-center justify-center overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800">
                 <img
                   src={img.preview || "/placeholder.svg"}
                   alt="preview"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
 
                 {/* Delete Button */}
                 <button
                   onClick={() => removeImage(img.id)}
-                  className="absolute top-3 right-3 p-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-all transform hover:scale-110 active:scale-95 shadow-lg"
+                  className="absolute top-3 right-3 transform rounded-lg bg-red-500 p-2 text-white shadow-lg transition-all hover:scale-110 hover:bg-red-600 active:scale-95"
                 >
-                  <Trash2 className="w-4 h-4" />
+                  <Trash2 className="h-4 w-4" />
                 </button>
 
                 {/* Format Badge */}
-                <div className="absolute top-3 left-3 px-3 py-1 bg-white/90 dark:bg-slate-900/90 text-slate-900 dark:text-slate-100 text-xs font-bold rounded-lg backdrop-blur-sm">
+                <div className="absolute top-3 left-3 rounded-lg bg-white/90 px-3 py-1 text-xs font-bold text-slate-900 backdrop-blur-sm dark:bg-slate-900/90 dark:text-slate-100">
                   {img.format}
                 </div>
               </div>
@@ -145,12 +145,12 @@ function ImagesGrid({ images, setImages }: any) {
               <div className="p-6">
                 {/* File Info */}
                 <div className="mb-5">
-                  <p className="text-sm font-semibold text-slate-700 dark:text-slate-300 truncate mb-2">
+                  <p className="mb-2 truncate text-sm font-semibold text-slate-700 dark:text-slate-300">
                     {img.file.name}
                   </p>
                   <div className="flex items-center justify-between text-xs text-slate-600 dark:text-slate-400">
                     <span className="flex items-center gap-1">
-                      <ImageIcon className="w-3 h-3" />
+                      <ImageIcon className="h-3 w-3" />
                       {img.width}×{img.height}
                     </span>
                     <span className="font-semibold">{img.sizeKB} KB</span>
@@ -159,40 +159,40 @@ function ImagesGrid({ images, setImages }: any) {
 
                 {/* Score */}
                 <div className="mb-5">
-                  <div className="flex items-center justify-between mb-2">
+                  <div className="mb-2 flex items-center justify-between">
                     <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">
                       Optimization Score
                     </span>
                     <span
-                      className={`px-3 py-1 rounded-full text-xs font-bold ${scoreInfo.color}`}
+                      className={`rounded-full px-3 py-1 text-xs font-bold ${scoreInfo.color}`}
                     >
                       {scoreInfo.label}
                     </span>
                   </div>
-                  <div className="relative w-full h-3 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                  <div className="relative h-3 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
                     <div
                       className={`h-full bg-gradient-to-r ${getScoreColor(
-                        img.score
-                      )} transition-all duration-500 shadow-lg`}
+                        img.score,
+                      )} shadow-lg transition-all duration-500`}
                       style={{ width: `${Math.min(img.score, 100)}%` }}
                     ></div>
                   </div>
-                  <p className="text-xs text-slate-600 dark:text-slate-400 mt-2 font-medium">
+                  <p className="mt-2 text-xs font-medium text-slate-600 dark:text-slate-400">
                     Score: {img.score}/100
                   </p>
                 </div>
 
                 {/* Device Compatibility */}
-                <div className="grid grid-cols-2 gap-3 mb-5">
+                <div className="mb-5 grid grid-cols-2 gap-3">
                   <div
-                    className={`flex items-center gap-2 p-3 rounded-lg border transition-all ${
+                    className={`flex items-center gap-2 rounded-lg border p-3 transition-all ${
                       warn.mobile.isBad
-                        ? "bg-orange-50 dark:bg-orange-950/30 border-orange-200 dark:border-orange-800"
-                        : "bg-emerald-50 dark:bg-emerald-950/30 border-emerald-200 dark:border-emerald-800"
+                        ? "border-orange-200 bg-orange-50 dark:border-orange-800 dark:bg-orange-950/30"
+                        : "border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-950/30"
                     }`}
                   >
                     <Smartphone
-                      className={`w-4 h-4 flex-shrink-0 ${
+                      className={`h-4 w-4 flex-shrink-0 ${
                         warn.mobile.isBad
                           ? "text-orange-600 dark:text-orange-400"
                           : "text-emerald-600 dark:text-emerald-400"
@@ -210,14 +210,14 @@ function ImagesGrid({ images, setImages }: any) {
                   </div>
 
                   <div
-                    className={`flex items-center gap-2 p-3 rounded-lg border transition-all ${
+                    className={`flex items-center gap-2 rounded-lg border p-3 transition-all ${
                       warn.desktop.isBad
-                        ? "bg-orange-50 dark:bg-orange-950/30 border-orange-200 dark:border-orange-800"
-                        : "bg-emerald-50 dark:bg-emerald-950/30 border-emerald-200 dark:border-emerald-800"
+                        ? "border-orange-200 bg-orange-50 dark:border-orange-800 dark:bg-orange-950/30"
+                        : "border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-950/30"
                     }`}
                   >
                     <Monitor
-                      className={`w-4 h-4 flex-shrink-0 ${
+                      className={`h-4 w-4 flex-shrink-0 ${
                         warn.desktop.isBad
                           ? "text-orange-600 dark:text-orange-400"
                           : "text-emerald-600 dark:text-emerald-400"
@@ -237,21 +237,21 @@ function ImagesGrid({ images, setImages }: any) {
 
                 {/* Compression Tip */}
                 <div
-                  className={`flex items-start gap-3 p-3 rounded-lg mb-5 border ${
+                  className={`mb-5 flex items-start gap-3 rounded-lg border p-3 ${
                     tipInfo.type === "success"
-                      ? "bg-emerald-50 dark:bg-emerald-950/30 border-emerald-200 dark:border-emerald-800"
+                      ? "border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-950/30"
                       : tipInfo.type === "warning"
-                      ? "bg-yellow-50 dark:bg-yellow-950/30 border-yellow-200 dark:border-yellow-800"
-                      : "bg-red-50 dark:bg-red-950/30 border-red-200 dark:border-red-800"
+                        ? "border-yellow-200 bg-yellow-50 dark:border-yellow-800 dark:bg-yellow-950/30"
+                        : "border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-950/30"
                   }`}
                 >
                   <Zap
-                    className={`w-4 h-4 flex-shrink-0 mt-0.5 ${
+                    className={`mt-0.5 h-4 w-4 flex-shrink-0 ${
                       tipInfo.type === "success"
                         ? "text-emerald-600 dark:text-emerald-400"
                         : tipInfo.type === "warning"
-                        ? "text-yellow-600 dark:text-yellow-400"
-                        : "text-red-600 dark:text-red-400"
+                          ? "text-yellow-600 dark:text-yellow-400"
+                          : "text-red-600 dark:text-red-400"
                     }`}
                   />
                   <span
@@ -259,8 +259,8 @@ function ImagesGrid({ images, setImages }: any) {
                       tipInfo.type === "success"
                         ? "text-emerald-700 dark:text-emerald-300"
                         : tipInfo.type === "warning"
-                        ? "text-yellow-700 dark:text-yellow-300"
-                        : "text-red-700 dark:text-red-300"
+                          ? "text-yellow-700 dark:text-yellow-300"
+                          : "text-red-700 dark:text-red-300"
                     }`}
                   >
                     {tipInfo.text}
@@ -270,9 +270,9 @@ function ImagesGrid({ images, setImages }: any) {
                 {/* Download Button */}
                 <button
                   onClick={() => downloadOptimized(img)}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 dark:from-teal-600 dark:to-cyan-600 dark:hover:from-teal-700 dark:hover:to-cyan-700 text-white font-semibold rounded-lg transition-all transform hover:scale-105 active:scale-95 shadow-lg"
+                  className="flex w-full transform items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-teal-500 to-cyan-500 px-4 py-3 font-semibold text-white shadow-lg transition-all hover:scale-105 hover:from-teal-600 hover:to-cyan-600 active:scale-95 dark:from-teal-600 dark:to-cyan-600 dark:hover:from-teal-700 dark:hover:to-cyan-700"
                 >
-                  <Download className="w-4 h-4" />
+                  <Download className="h-4 w-4" />
                   Download Optimized
                 </button>
               </div>
